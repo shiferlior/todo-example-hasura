@@ -16,7 +16,7 @@ const Blet: React.FC = () => {
       error: {error},
       isFetching: {isLoading},
       stat: {status},
-      {data?.project_managers.map((e) => JSON.stringify(e))}
+      {data?.projectManagers.map((e) => JSON.stringify(e))}
     </div>
   );
 };

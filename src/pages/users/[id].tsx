@@ -1,9 +1,11 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
+//import { sampleUserData } from '../../utils/sample-data'
 import Layout from '../../components/Layout'
 import ListDetail from '../../components/ListDetail'
+import { GraphQLClient } from 'graphql-request';
+import { getSdk } from '../../generated/backend/graphql';
 
 type Props = {
   item?: User
@@ -35,8 +37,13 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 export default StaticPropsDetail
 
 export const getStaticPaths: GetStaticPaths = async () => {
+
+  const sdk = getSdk(new GraphQLClient('http://localhost:8080/v1/graphql'));
+  const pm = await sdk.getProjectManagers();
+
+    const items: User[] = pm.projectManagers;
   // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
+  const paths = items.map((user) => ({//sampleUserData.map((user) => ({
     params: { id: user.id.toString() },
   }))
 
@@ -51,7 +58,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id
-    const item = sampleUserData.find((data) => data.id === Number(id))
+    const sdk = getSdk(new GraphQLClient('http://localhost:8080/v1/graphql'));
+    const pm = await sdk.getProjectManagers();
+
+    const items: User[] = pm.projectManagers;
+    const item = items.find((data) => data.id === Number(id)) //sampleUserData.find((data) => data.id === Number(id))
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } }

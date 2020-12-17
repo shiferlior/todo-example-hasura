@@ -1,0 +1,27 @@
+query getProjectManagers {
+  projectManagers {
+    id
+    name
+  }
+}
+
+query getEntities{
+  entities {
+    email
+    id
+    idNumber
+    letterAddress
+    linkToS3
+    phone
+  }
+}
+
+# mutation insertPayMethod($type: String) {
+#   insert_pay_methods(objects: {method_type: $type}) {
+#     returning {
+#       id
+#       methodType
+#     }
+#     affectedRows
+#   }
+# }

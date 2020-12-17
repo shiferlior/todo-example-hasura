@@ -4,32 +4,32 @@
   object_relationships:
   - name: property
     using:
-      foreign_key_constraint_on: property_id
+      foreign_key_constraint_on: propertyId
   array_relationships:
   - name: payments
     using:
       foreign_key_constraint_on:
-        column: contract_id
+        column: contractId
         table:
           schema: public
           name: payments
   - name: tickets
     using:
       foreign_key_constraint_on:
-        column: contract_id
+        column: contractId
         table:
           schema: public
           name: tickets
 - table:
     schema: public
-    name: contracts_renters_relation
+    name: contractsRentersRelation
   object_relationships:
   - name: entity
     using:
-      foreign_key_constraint_on: contract_id
+      foreign_key_constraint_on: contractId
   - name: entityByRenterId
     using:
-      foreign_key_constraint_on: renter_id
+      foreign_key_constraint_on: renterId
 - table:
     schema: public
     name: entities
@@ -37,57 +37,57 @@
   - name: contracts_renters_relations
     using:
       foreign_key_constraint_on:
-        column: contract_id
+        column: contractId
         table:
           schema: public
-          name: contracts_renters_relation
+          name: contractsRentersRelation
   - name: contractsRentersRelationsByRenterId
     using:
       foreign_key_constraint_on:
-        column: renter_id
+        column: renterId
         table:
           schema: public
-          name: contracts_renters_relation
+          name: contractsRentersRelation
 - table:
     schema: public
-    name: insurance_contracts
+    name: insuranceContracts
   object_relationships:
   - name: property
     using:
-      foreign_key_constraint_on: property_id
+      foreign_key_constraint_on: propertyId
 - table:
     schema: public
-    name: pay_methods
+    name: payMethods
 - table:
     schema: public
     name: payments
   object_relationships:
   - name: contract
     using:
-      foreign_key_constraint_on: contract_id
+      foreign_key_constraint_on: contractId
   array_relationships:
   - name: tickets
     using:
       foreign_key_constraint_on:
-        column: payment_id
+        column: paymentId
         table:
           schema: public
           name: tickets
 - table:
     schema: public
-    name: project_managers
+    name: projectManagers
   array_relationships:
   - name: properties
     using:
       foreign_key_constraint_on:
-        column: project_manager
+        column: projectManager
         table:
           schema: public
           name: properties
   - name: tickets
     using:
       foreign_key_constraint_on:
-        column: project_manager_id
+        column: projectManagerId
         table:
           schema: public
           name: tickets
@@ -97,30 +97,30 @@
   object_relationships:
   - name: projectManagerByProjectManager
     using:
-      foreign_key_constraint_on: project_manager
+      foreign_key_constraint_on: projectManager
   array_relationships:
   - name: contracts
     using:
       foreign_key_constraint_on:
-        column: property_id
+        column: propertyId
         table:
           schema: public
           name: contracts
   - name: insurance_contracts
     using:
       foreign_key_constraint_on:
-        column: property_id
+        column: propertyId
         table:
           schema: public
-          name: insurance_contracts
+          name: insuranceContracts
 - table:
     schema: public
-    name: ticket_types
+    name: ticketTypes
   array_relationships:
   - name: tickets
     using:
       foreign_key_constraint_on:
-        column: tieck_type_id
+        column: tieckTypeId
         table:
           schema: public
           name: tickets
@@ -130,13 +130,13 @@
   object_relationships:
   - name: contract
     using:
-      foreign_key_constraint_on: contract_id
+      foreign_key_constraint_on: contractId
   - name: payment
     using:
-      foreign_key_constraint_on: payment_id
+      foreign_key_constraint_on: paymentId
   - name: project_manager
     using:
-      foreign_key_constraint_on: project_manager_id
+      foreign_key_constraint_on: projectManagerId
   - name: ticket_type
     using:
-      foreign_key_constraint_on: tieck_type_id
+      foreign_key_constraint_on: tieckTypeId

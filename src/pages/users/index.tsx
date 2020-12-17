@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const sdk = getSdk(new GraphQLClient('http://localhost:8080/v1/graphql'));
   const pm = await sdk.getProjectManagers();
 
-  const items: User[] = pm.project_managers;//sampleUserData
+  const items: User[] = pm.projectManagers;//sampleUserData
   return { props: { items } }
 }
 
