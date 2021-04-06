@@ -6,13 +6,6 @@
     using:
       foreign_key_constraint_on: propertyId
   array_relationships:
-  - name: payments
-    using:
-      foreign_key_constraint_on:
-        column: contractId
-        table:
-          schema: public
-          name: payments
   - name: tickets
     using:
       foreign_key_constraint_on:
@@ -61,10 +54,6 @@
 - table:
     schema: public
     name: payments
-  object_relationships:
-  - name: contract
-    using:
-      foreign_key_constraint_on: contractId
   array_relationships:
   - name: tickets
     using:
@@ -83,7 +72,7 @@
         column: projectManager
         table:
           schema: public
-          name: properties
+          name: propertyNodes
   - name: tickets
     using:
       foreign_key_constraint_on:
@@ -93,7 +82,7 @@
           name: tickets
 - table:
     schema: public
-    name: properties
+    name: propertyNodes
   object_relationships:
   - name: projectManagerByProjectManager
     using:
@@ -120,7 +109,7 @@
   - name: tickets
     using:
       foreign_key_constraint_on:
-        column: tieckTypeId
+        column: ticketTypeId
         table:
           schema: public
           name: tickets
@@ -139,4 +128,4 @@
       foreign_key_constraint_on: projectManagerId
   - name: ticket_type
     using:
-      foreign_key_constraint_on: tieckTypeId
+      foreign_key_constraint_on: ticketTypeId
